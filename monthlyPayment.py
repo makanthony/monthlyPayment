@@ -4,6 +4,21 @@ August 27 2022
 
 Anthony Mak
 """
+import numpy as np
+
+class loan:
+    
+    def computePmt(PV, intAPR, nMonths): #compute monthly payments
+        return intAPR/1200*PV/(1-(1+(intAPR/1200))**(-nMonths))
+    
+    def compute_intAPR(PV, nMonths, Pmt): #compute intAPR (interest rate)
+        return 0
+    
+    def compute_nMonths(PV, Pmt, intAPR): #compute number of months
+        return np.log((Pmt/intAPR)/(Pmt/intAPR)-PV)/np.log(1+intAPR)
+    
+    def computePV(Pmt, intAPR, nMonths): #compute PV (Principal Value) 
+        return (Pmt/intAPR)*(1-(1/pow((1+intAPR), nMonths)))
 
 def payment(pv, rAPR, nMonths):
     """
